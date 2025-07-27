@@ -1,0 +1,19 @@
+/* ...existing code... */
+.carousel {
+    height: 300px;
+    width: 100%;
+    /* position: relative; */
+    /* overflow: hidden; */
+}
+
+ img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 130;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+}
+/* ...existing code... */
