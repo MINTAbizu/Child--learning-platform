@@ -1,0 +1,46 @@
+.teacher-card {
+  max-width: 400px;
+  margin: auto;
+  transition: box-shadow 0.2s;
+}
+.teacher-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.teacher-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+}
+.star-rating {
+  font-size: 1.3rem;
+  color: #ffd700;
+  display: flex;
+  align-items: center;
+}
+.star {
+  margin-right: 2px;
+  color: #ccc;
+  transition: color 0.2s;
+}
+.star.filled {
+  color: #ffd700;
+}
+@media (max-width: 600px) {
+  .teacher-card {
+    max-width: 95vw;
+    padding: 1rem;
+  }
+  .teacher-img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.teacher-card {
+  width: 320px;
+  max-width: 95vw;
+  flex: 1 1 320px;
+  margin-bottom: 1rem;
+}
