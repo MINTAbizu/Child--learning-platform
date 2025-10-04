@@ -1,12 +1,117 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 function PrevoiuStudent() {
+    const [users, setUsers] = useState([]);
+ 
+
+    const [loading, setLoading] = useState(false);
+    
+    const [error, setError] = useState(null);
+  
+
+  
+
+     const fetchUsers = async () => {
+            try {
+                // setLoading(true);
+                setError(null);
+                const response = await axios.get('http://localhost:3000/admin/getstudent');
+                console.log(response)
+                console.log('test')
+                if (Array.isArray(response.data)) {
+                    console.log(response.data)
+                    setUsers(response.data);
+                } else {
+                    setUsers([]);
+                }
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                setError('Failed to fetch users. Please try again later.');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+           useEffect(() => {
+                
+                fetchUsers();
+            }, []);
   return (
     <div>
           <div class="cv-protection-kit spacer-top-less">
         <div class="container">
             <div class="cv-heading">
                 <h1>our Previous Top Students</h1>
+            
+
+        {/* {loading ? (
+            <div className="loading-message">Loading users...</div>
+        ) : error ? (
+            <div className="error-message">{error}</div>
+        ) : (
+            <div className="table-responsive">
+                
+                    
+                    
+                            
+                         
+    
+                   
+                    
+                        {users.length === 0 ? (
+                            
+                                <td colSpan="4" className="no-data">No users found</td>
+                            
+                        ) : (
+                            users.map(user => (
+                                
+                                   <h1> {user.fname}</h1>
+
+                                    
+                                  
+                            
+                            ))
+                        )}
+                    
+            </div>
+        )} */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
@@ -16,7 +121,7 @@ function PrevoiuStudent() {
                             <div class="cv-product-icon">
                                 <ul>
                                     <li><a href="javascript:;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                             <g>
                                                 <path d="M376,30c-27.783,0-53.255,8.804-75.707,26.168c-21.525,16.647-35.856,37.85-44.293,53.268
                                                     c-8.437-15.419-22.768-36.621-44.293-53.268C189.255,38.804,163.783,30,136,30C58.468,30,0,93.417,0,177.514
@@ -24,10 +129,10 @@ function PrevoiuStudent() {
                                                     s7.62-1.404,10.532-3.953c22.094-19.322,43.348-37.435,62.111-53.425C439.057,330.529,512,268.368,512,177.514
                                                     C512,93.417,453.532,30,376,30z"></path>
                                             </g>
-                                        </svg>
+                                        </svg> */}
                                     </a></li>
                                     <li><a href="product-single.html">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 461.312 461.312">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 461.312 461.312">
                                             <g>
                                                 <path d="M230.656,156.416c-40.96,0-74.24,33.28-74.24,74.24s33.28,74.24,74.24,74.24s74.24-33.28,74.24-74.24
                                                     S271.616,156.416,230.656,156.416z M225.024,208.64c-9.216,0-16.896,7.68-16.896,16.896h-24.576
@@ -39,10 +144,10 @@ function PrevoiuStudent() {
                                                     C463.104,237.312,463.104,224.512,455.936,215.296z M230.656,338.176c-59.392,0-107.52-48.128-107.52-107.52
                                                     s48.128-107.52,107.52-107.52s107.52,48.128,107.52,107.52S290.048,338.176,230.656,338.176z"></path>
                                             </g>
-                                        </svg>
+                                        </svg> */}
                                     </a></li>
                                     <li><a href="product-single.html">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.092 512.092">
+                                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.092 512.092">
                                             <g>
                                                 <path d="M312.453,199.601c-6.066-6.102-12.792-11.511-20.053-16.128c-19.232-12.315-41.59-18.859-64.427-18.859
                                                     c-31.697-0.059-62.106,12.535-84.48,34.987L34.949,308.23c-22.336,22.379-34.89,52.7-34.91,84.318
@@ -63,14 +168,14 @@ function PrevoiuStudent() {
                                                     c1.877-0.085,3.84-0.512,6.059-0.512h2.901l5.888-0.853l2.731-0.512l4.949-1.024h0.939c20.961-5.265,40.101-16.118,55.381-31.403
                                                     l108.629-108.629C523.718,157.296,523.718,81.65,477.061,34.993z"></path>
                                             </g>
-                                        </svg>
+                                        </svg> */}
                                     </a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Hand sanitizer</a>
-                            <p class="cv-pdoduct-price">$230</p>
+                            <a href="product-single.html" class="cv-price-title">Mintsenot</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                          
                         </div>
                     </div>
@@ -135,8 +240,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Plastic face shield</a>
-                            <p class="cv-pdoduct-price">$165</p>
+                            <a href="product-single.html" class="cv-price-title">kalkidane</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                             <a href="javascript:;" class="cv-price-cart">
                            
                         </a>
@@ -146,7 +251,7 @@ function PrevoiuStudent() {
                 <div class="col-lg-3 col-sm-6">
                     <div class="cv-product-box">
                         <div class="cv-product-img">
-                            <span class="cv-sale">sale</span>
+                            {/* <span class="cv-sale">sale</span> */}
                             <img src="https://via.placeholder.com/253x253" alt="image" class="img-fluid"/>
                             <div class="cv-product-icon">
                                 <ul>
@@ -204,8 +309,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Glass face mask</a>
-                            <p class="cv-pdoduct-price"><del>$70</del> $65</p>
+                            <a href="product-single.html" class="cv-price-title">Grum</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                          
                         </div>
                     </div>
@@ -270,8 +375,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Saftey mask</a>
-                            <p class="cv-pdoduct-price">$25</p>
+                            <a href="product-single.html" class="cv-price-title">Safk</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                          
                         </div>
                     </div>
@@ -279,7 +384,7 @@ function PrevoiuStudent() {
                 <div class="col-lg-3 col-sm-6">
                     <div class="cv-product-box">
                         <div class="cv-product-img">
-                            <span class="cv-sale">sale</span>
+                            {/* <span class="cv-sale">sale</span> */}
                             <img src="https://via.placeholder.com/253x253" alt="image" class="img-fluid"/>
                             <div class="cv-product-icon">
                                 <ul>
@@ -337,8 +442,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Plastic face shield</a>
-                            <p class="cv-pdoduct-price"><del>$170</del> $150</p>
+                            <a href="product-single.html" class="cv-price-title"> sheeld</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                             <a href="javascript:;" class="cv-price-cart">
                                
                             </a>
@@ -405,8 +510,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">N95 face mask</a>
-                            <p class="cv-pdoduct-price">$250</p>
+                            <a href="product-single.html" class="cv-price-title">frihwot</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                             <a href="javascript:;" class="cv-price-cart">
                                
                             </a>
@@ -416,7 +521,7 @@ function PrevoiuStudent() {
                 <div class="col-lg-3 col-sm-6">
                     <div class="cv-product-box">
                         <div class="cv-product-img">
-                            <span class="cv-sale">sale</span>
+                            {/* <span class="cv-sale">sale</span> */}
                             <img src="https://via.placeholder.com/253x253" alt="image" class="img-fluid"/>
                             <div class="cv-product-icon">
                                 <ul>
@@ -474,8 +579,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Oxygen mask</a>
-                            <p class="cv-pdoduct-price"><del>$70</del> $65</p>
+                            <a href="product-single.html" class="cv-price-title">Oxygen </a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                             <a href="javascript:;" class="cv-price-cart">
                                
                             </a>
@@ -485,7 +590,7 @@ function PrevoiuStudent() {
                 <div class="col-lg-3 col-sm-6">
                     <div class="cv-product-box">
                         <div class="cv-product-img">
-                            <span class="cv-sale">sale</span>
+                            {/* <span class="cv-sale">sale</span> */}
                             <img src="https://via.placeholder.com/253x253" alt="image" class="img-fluid"/>
                             <div class="cv-product-icon">
                                 <ul>
@@ -510,8 +615,8 @@ function PrevoiuStudent() {
                             </div>
                         </div>
                         <div class="cv-product-data">
-                            <a href="product-single.html" class="cv-price-title">Hand gloves</a>
-                            <p class="cv-pdoduct-price"><del>$70</del> $65</p>
+                            <a href="product-single.html" class="cv-price-title">Hana</a>
+                            <p class="cv-pdoduct-price"><>score</> 99%</p>
                             <a href="javascript:;" class="cv-price-cart">
                                
                             </a>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Contactpage() {
   const [formData, setFormData] = useState({
@@ -55,56 +54,52 @@ function Contactpage() {
   };
 
   return (
-    <div className="container ">
+    <div className="contact-container">
       <section id="contact-section">
         <div className="contact-form">
-          <form onSubmit={handleSubmit} className="shadow p-4 rounded bg-light">
-            <h2 className="text-center">Send Message</h2>
-            <div className="mb-3">
+          <form onSubmit={handleSubmit}>
+            <h2>Send Message</h2>
+            <div className="input-box">
               <input 
                 type="text" 
                 name="name"
-                className="form-control"
-                placeholder="Full Name"
                 value={formData.name}
                 onChange={handleInputChange}
                 required
               />
+              <span>Full Name</span>
             </div>
-            <div className="mb-3">
+            <div className="input-box">
               <input 
                 type="email" 
                 name="email"
-                className="form-control"
-                placeholder="Email"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
               />
+              <span>Email</span>
             </div>
-            <div className="mb-3">
+            <div className="input-box">
               <input 
                 type="tel" 
                 name="phone"
-                className="form-control"
-                placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
               />
+              <span>Phone Number</span>
             </div>
-            <div className="mb-3">
+            <div className="input-box">
               <textarea 
                 name="message"
-                className="form-control"
-                placeholder="Type your Message..."
                 value={formData.message}
                 onChange={handleInputChange}
                 required
               ></textarea>
+              <span>Type your Message...</span>
             </div>
-            <div className="text-center">
-              <input type="submit" className="btn btn-primary" value="Send" />
+            <div className="input-box">
+              <input type="submit" value="Send" />
             </div>
           </form>
         </div>

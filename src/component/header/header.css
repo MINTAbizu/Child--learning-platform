@@ -6,7 +6,14 @@
     border-bottom: 2px solid orangered;
     height: 50px;
     box-shadow: red;
-    border-radius: 20px;
+    /* border-radius: 20px; */
+   
+
+}
+.headers{
+     position: sticky;
+    top: 0;
+    z-index: 1000;
 
 }
 

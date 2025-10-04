@@ -1,6 +1,8 @@
 // Example: Teacher Registration Form
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
 // import { set } from 'mongoose';
 function TeacherSignup() {
  
@@ -22,7 +24,7 @@ function TeacherSignup() {
   const [passwordError, setPasswordError] = useState('');
   const [servererror, setservererror] = useState('');
 
-  
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -52,9 +54,7 @@ function TeacherSignup() {
     if(!password){
       setPasswordError("password required")
       flag=false;
-    }else if(password.length>6){
-      setPasswordError("password must be greater than 6 character")
-      flag=false
+    
 
     }else if (!/(?=.*[a-z])/.test(password)){
       setPasswordError("password must be include lower case character")
@@ -76,22 +76,22 @@ function TeacherSignup() {
     
 
 
-       const formdata = {
-           FirstName:firstName,
-Lastname:lastName,
-Email:email,
-Password:password, 
-PhoneNumber:phone,
-CountryorRegion:country,
-ProfessionalTitle:title,
-SubjectsTaught:subjects,
-YearsofExperience:experience,
-HighestQualification:qualification,
-ShortBio:bio
-
-  };
+  const formdata = {
+    firstName,
+    lastName,
+    email,
+    password,
+    phoneNumber: phone,
+    country,
+    professionalTitle: title,
+    subjectsTaught: subjects,
+    yearsOfExperience: experience,
+    highestQualification: qualification,
+    ShortBio: bio,
+};
+  
   try {
-    const response = await fetch('http:/localhost:5000/teachearrigsteration', {
+    const response = await fetch('http://localhost:3000/teacher/student/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -101,21 +101,23 @@ ShortBio:bio
     const data = await response.json();
     console.log(data)
    if (response.ok) {
+    setSuccess('Login successful');
+    navigate('/dashboard'); // Redirect to dashboard after successful login
   // Save employee info in localStorage for later use (e.g., in header)
-const employee = {
-  employee_token: data.token,
-  employee_id: data.employee_id,
-  employee_first_name: data.firstname, // use 'firstname' from backend
-  employee_role: data.company_role_id,
-};
-localStorage.setItem('employee', JSON.stringify(employee));
-  setSuccess('Login successful');
-  setError('');
-  setTimeout(() => {
-    navigate('/Admin/addEmploye'); // Redirect to dashboard after successful login
-  }, 2000);
+// const employee = {
+//   employee_token: data.token,
+//   employee_id: data.employee_id,
+//   employee_first_name: data.firstname, // use 'firstname' from backend
+//   employee_role: data.company_role_id,
+// };
+// localStorage.setItem('employee', JSON.stringify(employee));
+//   setSuccess('Login successful');
+//   setError('');
+//   setTimeout(() => {
+//     // navigate('/Admin/addEmploye'); // Redirect to dashboard after successful login
+//   }, 2000);
 } else {
-  setError(data.error || 'Login failed');
+  setError(data.error || 'Registration  failed');
   setSuccess('');
 }
   }
@@ -128,6 +130,11 @@ localStorage.setItem('employee', JSON.stringify(employee));
 
   
   }
+  //  useEffect(() => {
+          
+  //             fetchUsers();
+          
+  //     }, []);
 
   return (
     <div className="flex-grow-1 p-4">
@@ -208,6 +215,8 @@ localStorage.setItem('employee', JSON.stringify(employee));
                       <textarea name="bio" className="form-control"
                       value={bio} onChange={(e)=>setbio(e.target.value)} rows={3} />
                     </div>
+                    {error && <div style={{color:'red'}}>{error} </div>}
+                    {/* {Data.msg} */}
                     <button type="submit" className="btn btn-primary w-100">Register</button>
                   </form>
                 </div>

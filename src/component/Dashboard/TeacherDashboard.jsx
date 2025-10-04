@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -48,16 +49,16 @@ function TeacherDashboard() {
         </button>
         <ul className="nav flex-column w-100">
           <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Dashboard</a></li>
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Resources </a></li>
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Students</a></li>
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Messages</a></li>
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Assignments</a></li>
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Profiles</a></li>
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Class</a></li>
+     <li className="nav-item mb-2"><Link to={'/resourses'} className="nav-link text-white" href="#" >Resources </Link></li>
+          <li className="nav-item mb-2"><Link to={'/students'} className="nav-link text-white" href="#" >Students</Link></li>
+          <li className="nav-item mb-2"><Link to={'/Messages'} className="nav-link text-white" href="#" >Messages</Link></li>
+          <li className="nav-item mb-2"><Link to={'/Assignments'} className="nav-link text-white" href="#" >Assignments</Link></li>
+          <li className="nav-item mb-2"><Link to={'/profiles'} className="nav-link text-white" href="#" >Profiles</Link></li>
+          <li className="nav-item mb-2"><Link to={'/classes'} className="nav-link text-white" href="#" >Class</Link></li>
           <b></b>
           <br />
           <br />
-          <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Logout</a></li>
+          <li className="nav-item mb-2"><Link to={'/logout'} className="nav-link text-white" href="#" >Logout</Link></li>
 
          
         </ul>
@@ -65,7 +66,7 @@ function TeacherDashboard() {
       
       
     </div>
-    <div className='col-lg-9  bg-light w-100 '  style={{background:'red'}}>
+    {/* <div className='col-lg-9  bg-light w-100 '  style={{background:'red'}}>
        <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Dashboard</a></li>
           <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >import </a></li>
           <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Students</a></li>
@@ -74,7 +75,7 @@ function TeacherDashboard() {
           <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Profiles</a></li>
           <li className="nav-item mb-2"><a className="nav-link text-white" href="#" >Class</a></li>
 
-    </div>
+    </div> */}
    </div>
   );
 }

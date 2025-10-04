@@ -9,7 +9,10 @@ function Teachears() {
       title: "Math Teacher",
       experience: "5",
       description: "John has over 5 years of experience teaching mathematics to high school students. He is passionate about making math fun and engaging.",
-      rating: 4
+      rating: 4,
+      Learners:56,
+      courses:0,
+      Price:12
     },
     {
       name: "Jane Smith",
@@ -17,7 +20,10 @@ function Teachears() {
       title: "Science Teacher",
       experience: "7",
       description: "Jane specializes in physics and chemistry, making science exciting for all students.",
-      rating: 5
+      rating: 5,
+       Learners:5,
+       courses:1
+
     },
     {
       name: "Alex Brown",
@@ -25,7 +31,9 @@ function Teachears() {
       title: "English Teacher",
       experience: "3",
       description: "Alex helps students master English literature and writing skills.",
-      rating: 3
+      rating: 3,
+       Learners:6,
+       courses:0
     },
        {
       name: "Alex Brown",
@@ -33,7 +41,10 @@ function Teachears() {
       title: "English Teacher",
       experience: "3",
       description: "Alex helps students master English literature and writing skills.",
-      rating: 3
+      rating: 3,
+       Learners:23,
+
+       courses:0
     },
        {
       name: "Alex Brown",
@@ -41,14 +52,16 @@ function Teachears() {
       title: "English Teacher",
       experience: "3",
       description: "Alex helps students master English literature and writing skills.",
-      rating: 3
+      rating: 3,
+       Learners:2
     },   {
       name: "Alex Brown",
       image: "https://via.placeholder.com/150",
       title: "English Teacher",
       experience: "3",
       description: "Alex helps students master English literature and writing skills.",
-      rating: 3
+      rating: 3,
+       Learners:5
     },
        {
       name: "Alex Brown",
@@ -56,7 +69,8 @@ function Teachears() {
       title: "English Teacher",
       experience: "3",
       description: "Alex helps students master English literature and writing skills.",
-      rating: 3
+      rating: 3,
+       Learners:23
     },
        {
       name: "Alex Brown",

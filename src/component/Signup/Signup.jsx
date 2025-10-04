@@ -1,35 +1,89 @@
 import React, { useState } from 'react';
-import '../Signup/Signup.css';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../Signup/Signup.css';
+import { useAuth } from '../../Auth/Authservies.jsx';
+
 
 function Signup() {
+  const  {register}=useAuth()
   const [form, setForm] = useState({
     username: '',
-    firstName: '',
-    lastName: '',
-    grade: '',
-    candidate: '',
+    fname: '',
+    lname: '',
     email: '',
-    password: ''
+    password: '',
+    grade: '',
+    candidate: ''
   });
+
   const navigate = useNavigate();
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prevForm => ({ ...prevForm, [name]: value }));
+
     // Navigate to TeacherSignup if candidate is teacher
-    if (e.target.name === 'candidate' && e.target.value === 'teacher') {
+    if (name === 'candidate' && value === 'teacher') {
       navigate('/TeacherSignup');
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    try {
+      await  register({
+         username:form.username,
+    fname: form.fname,
+    lname: form.lname,
+    email: form.email,
+    password: form.password,
+    grade: form.grade,
+    candidate: form.candidate
+      })
+      // const response = await axios.post('http://localhost:3000/student/student/register', form);
+      alert(response.data.msg); // Show success message
+    const studentName = form.fname;
+    const studentgrade = form.grade;
+      // Redirect based on selected grade
+      switch (form.grade) {
+        case 'Grade-5':
+          navigate('/AllGrades',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-6':
+          navigate('/Grade6',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-7':
+          navigate('/Grade7' ,{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-8':
+          navigate('/Grade8',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-9':
+          navigate('/Grade9',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-10':
+          navigate('/Grade10',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-11':
+          navigate('/Grade11',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        case 'Grade-12':
+          navigate('/Grade12',{ state: { studentName } , studentgrade: form.grade });
+          break;
+        default:
+          navigate('/login'); // Fallback if no grade matches
+          break;
+      }
+    } catch (error) {
+      console.error('Error during signup:', error.response ? error.response.data : error.message);
+      alert('Signup failed. Please try again.');
+    }
   };
 
   return (
-    <div className="form-container ">
-      <div className="">
+    <div className="form-container">
+      <div>
         <h2>Signup</h2>
         <p>
           If you have an account just{' '}
@@ -38,8 +92,7 @@ function Signup() {
           </span>
         </p>
         <form onSubmit={handleSubmit} className="row">
-
-             <div className="mb-3">
+          <div className="mb-3">
             <hr />
             <label>Candidates</label>
             <select
@@ -67,29 +120,29 @@ function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label>First-Name</label>
+            <label>First Name</label>
             <input
               type="text"
-              name="firstName"
+              name="fname"
               className="form-control"
-              value={form.firstName}
+              value={form.fname}
               onChange={handleChange}
               required
             />
           </div>
           <div className="mb-3">
-            <label>Last-Name</label>
+            <label>Last Name</label>
             <input
               type="text"
-              name="lastName"
+              name="lname"
               className="form-control"
-              value={form.lastName}
+              value={form.lname}
               onChange={handleChange}
               required
             />
           </div>
           <div className="mb-3">
-            <label>Choose-Grade</label>
+            <label>Choose Grade</label>
             <select
               name="grade"
               className="form-control"
@@ -108,7 +161,6 @@ function Signup() {
               <option value="Grade-12">Grade-12</option>
             </select>
           </div>
-         
           <div className="mb-3">
             <label>Email</label>
             <input

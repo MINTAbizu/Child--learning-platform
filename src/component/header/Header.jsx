@@ -7,7 +7,7 @@ function Header() {
    <div className='headers'>
 
      <div className='headerrwaper'>
-      <div className="logo">Tutorial</div>
+      <div className="logo"><span>Kelal-</span>Tutorial</div>
      <div className="headerlistcontainer">
   <ul className="row list-unstyled m-0 p-0 justify-content-end">
     <li className="col-auto"><Link to={'/'}>Home</Link></li>
@@ -23,6 +23,8 @@ function Header() {
     </div>
 
     <div className="headerniche">
+      {/* <marquee behavior="text" direction="horizontal"> </marquee> */}
+     
       {/* <p>Learning  for all  by all !!!!!!!!!!!</p> */}
     </div>
    </div>

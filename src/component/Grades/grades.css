@@ -1,0 +1,18 @@
+.top{
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.sidbar{
+    left: 0;
+    margin-left: -100px;
+    border: 10px;
+    border-radius: 5px red;
+    width: 200px;
+    background-color: black;
+}
+
+.center{
+    padding-left: 150px;
+}
